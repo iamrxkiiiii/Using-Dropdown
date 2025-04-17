@@ -1,0 +1,49 @@
+﻿@model EmployeeEntity
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Employee</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DesignationId" class="control-label"></label>
+                <select asp-for="DesignationId" asp-items="ViewBag.DesignationList" class="form-select">
+                    <option disabled selected>-- Select Designation --</option>
+                </select>
+                <span asp-validation-for="DesignationId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+
+            <div class="form-group mt-2">
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger"
+                   onclick="return confirm('Are you sure you want to delete this employee?');">
+                    Delete
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
